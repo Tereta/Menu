@@ -1,0 +1,87 @@
+.admin__field-control {
+    .admin {
+        &__action {
+            &-w3site-tree {
+                .editForm {
+                    clear: both;
+                    
+                    .buttonsScope {
+                        padding-top: 10px;
+                        
+                        .save {
+                            padding: 10px 20px;
+                            background: #eb5202;
+                            border: none;
+                            color: #fff;
+                            font-weight: bold;
+                        }
+                    }
+                }
+                
+                ul.data-tree {
+                    position: relative;
+                    list-style: none;
+                    
+                    & > .buttonsScope {
+                        clear: both;
+                    }
+                    
+                    .listItemWrapper {
+                        padding: 2px 10px;
+                        clear: both;
+                        
+                        &:hover {
+                            background-color: #eee;
+                        }
+                    }
+                    
+                    ul {
+                        padding-left: 10px;
+                        list-style: none;
+                    }
+                }
+                
+                .buttonsScope {
+                    float: right;
+                    clear: both;
+                    
+                    .removeButton {
+                        float: left;
+                        &:before {
+                            font-size: 29px;
+                            line-height: 10px;
+                            content: '-';
+                            padding: 0px 5px;
+                        }
+                    }
+
+                    .addButton {
+                        float: left;
+                        
+                        &:before {
+                            font-size: 29px;
+                            line-height: 14px;
+                            content: '+';
+                            padding: 0px 5px;
+                        }
+                    }
+
+                    .editButton {
+                        float: left;
+                        
+                        &:before {
+                            content: '\e631';
+                            font-family: @icons-admin__font-name;
+                            padding: 0px 5px;
+                        }
+                    }
+                }
+                
+                & > .buttonsScope {
+                    float: left;
+                    padding-left: 10px;
+                }
+            }
+        }
+    }
+}

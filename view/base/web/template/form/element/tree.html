@@ -1,0 +1,77 @@
+<div class="admin__action-w3site-tree">
+    <!-- ko if: dataTree().length -->
+        <ul class="data-tree" data-bind="template: {name: 'dataTreeTemplate', foreach: dataTree, as: 'dataTreeItem'}"></ul>
+    <!-- /ko -->
+    <div class="buttonsScope">
+        <span 
+            data-bind="
+                click: element.addSubElement
+
+            " href="#" class="addButton"></span>
+    </div>
+
+    <!-- ko if: dataForm().shown -->
+        <form class="editForm">
+            <fieldset>
+                <legend>Edit the menu item</legend>
+
+                <div>
+                    <div>Label:</div>
+                    <div>
+                        <input type="text" name="label" data-bind="value: dataForm().label">
+                    </div>
+                    <div>Link:</div>
+                    <div>
+                        <input type="text" name="link" data-bind="value: dataForm().link">
+                    </div>
+                </div>
+                <div class="buttonsScope">
+                    <input type="button" value="Change" class="save" data-bind="click: dataFormSave" />
+                </div>
+            </fieldset>
+        </form>
+    <!-- /ko -->
+
+    <input type="hidden" data-bind="
+        value: value,
+        attr: {
+            name: inputName,
+            placeholder: placeholder
+        }
+    " />
+</div>
+<script type="text/html" id="dataTreeTemplate">
+    <li>
+        <div class="listItemWrapper">
+            <span data-bind="click: function(){ 
+                        element.editElement($data, $parent)
+                    }">
+                <strong data-bind="text: dataTreeItem.dataItem().title"></strong>
+                <i>(<span data-bind="text: dataTreeItem.dataItem().link"></span>)</i>
+            </span>
+            <div class="buttonsScope">
+                <span 
+                    data-bind="
+                        click: function(){ 
+                            element.editElement($data, $parent)
+                        }
+                    " href="#" class="editButton"></span>
+                <span 
+                    data-bind="
+                        click: function(){ 
+                            element.removeElement($data, $parent)
+                        }
+                    " href="#" class="removeButton"></span>
+                <span 
+                    data-bind="
+                        click: function(){
+                            element.addSubElement($data, element);
+                        }
+                    " href="#" class="addButton"></span>
+            </div>
+        </div>
+        <!-- ko if: dataTreeItem.dataTree().length -->
+            <ul data-bind="template: { name: 'dataTreeTemplate', foreach: dataTreeItem.dataTree, as: 'dataTreeItem' }"></ul>
+        <!-- /ko -->
+    </li>
+</script>

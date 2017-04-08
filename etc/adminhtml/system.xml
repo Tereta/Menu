@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2015 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="wsite_menu" translate="label" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Menu</label>
+            <tab>general</tab>
+            <resource>WSite_Menu::config</resource>
+            <group id="general" translate="label" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>General</label>
+                <field id="main_menu" translate="label comment" type="select" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="0" canRestore="1">
+                    <label>Main Menu</label>
+                    <source_model>WSite\Menu\Model\Config\Source\Menu\Options</source_model>
+                    <comment>
+                        <![CDATA[Select if you whant to use specific menu for the "Main Menu" of Magento.]]>
+                    </comment>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

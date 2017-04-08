@@ -1,0 +1,9 @@
+<ul>
+    <?php foreach($block->getItems() as $item) : ?>
+        <li>
+            <a href="<?php echo $item->dataItem->link ?>"><?php echo $item->dataItem->title ?></a>
+            
+            <?php echo $this->getSubItems($item->dataTree)->toHtml() ?>
+        </li>
+    <?php endforeach ?>
+</ul>
