@@ -9,15 +9,11 @@
     <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
         <arguments>
             <argument name="collections" xsi:type="array">
-                <item name="wsite_menu_listing_grid_data_source" xsi:type="string">WSite\Menu\Model\ResourceModel\Menu\Grid\Collection</item>
+                <item name="magentoyo_menu_listing_grid_data_source" xsi:type="string">MagentoYo\Menu\Model\ResourceModel\Menu\Grid\Collection</item>
             </argument>
         </arguments>
     </type>
     
-    <preference for="Magento\Catalog\Plugin\Block\Topmenu" type="WSite\Menu\Plugin\Block\Topmenu" />
-    
-<!--    <type name="Magento\Theme\Block\Html\Topmenu">
-        <plugin name="catalogTopmenu" type="WSite\Menu\Plugin\Block\Topmenu" />
-    </type>-->
+    <preference for="Magento\Catalog\Plugin\Block\Topmenu" type="MagentoYo\Menu\Plugin\Block\Topmenu" />
 </config>
 

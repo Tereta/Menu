@@ -13,7 +13,7 @@
  * @license     http://opensource.org/licenses/osl-3.0.php Open Software License (OSL 3.0)
  */
 
-namespace WSite\Menu\Ui\DataProvider\ListingDataProvider;
+namespace MagentoYo\Menu\Ui\DataProvider\ListingDataProvider;
 
 class Grid extends \Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider
 {

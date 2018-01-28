@@ -1,11 +1,10 @@
 <components xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_definition.xsd">
-    <wsite_tree class="WSite\Menu\Ui\Component\Form\Element\Tree">
+    <magentoyo_tree class="MagentoYo\Menu\Ui\Component\Form\Element\Tree">
         <argument name="data" xsi:type="array">
             <item name="config" xsi:type="array">
-<!--                <item name="component" xsi:type="string">Magento_Ui/js/form/element/textarea</item>-->
-                <item name="component" xsi:type="string">WSite_Menu/js/form/element/tree</item>
+                <item name="component" xsi:type="string">MagentoYo_Menu/js/form/element/tree</item>
                 <item name="template" xsi:type="string">ui/form/field</item>
             </item>
         </argument>
-    </wsite_tree>
+    </magentoyo_tree>
 </components>

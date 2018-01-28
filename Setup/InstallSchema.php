@@ -13,7 +13,7 @@
  * @license     http://opensource.org/licenses/osl-3.0.php Open Software License (OSL 3.0)
  */
 
-namespace WSite\Menu\Setup;
+namespace MagentoYo\Menu\Setup;
 
 use Magento\Framework\Setup\InstallSchemaInterface;
 use Magento\Framework\Setup\ModuleContextInterface;
@@ -34,11 +34,8 @@ class InstallSchema implements InstallSchemaInterface
 
         $installer->startSetup();
 
-        /**
-         * Create table 'wsite_articles_category'
-         */
         $table = $installer->getConnection()
-            ->newTable($installer->getTable('wsite_menu'))
+            ->newTable($installer->getTable('magentoyo_menu'))
             ->addColumn(
                 'entity_id',
                 \Magento\Framework\DB\Ddl\Table::TYPE_INTEGER,

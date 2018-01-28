@@ -13,7 +13,7 @@
  * @license     http://opensource.org/licenses/osl-3.0.php Open Software License (OSL 3.0)
  */
 
-namespace WSite\Menu\Block;
+namespace MagentoYo\Menu\Block;
 
 class Menu extends \Magento\Framework\View\Element\Template
 {
@@ -21,8 +21,8 @@ class Menu extends \Magento\Framework\View\Element\Template
     protected $_menuSubModelFactory;
     
     public function __construct(
-        \WSite\Menu\Model\MenuFactory $menuModelFactory,
-        \WSite\Menu\Block\Menu\SubFactory $menuSubModelFactory,
+        \MagentoYo\Menu\Model\MenuFactory $menuModelFactory,
+        \MagentoYo\Menu\Block\Menu\SubFactory $menuSubModelFactory,
         \Magento\Framework\View\Element\Template\Context $context,
         array $data = array()
     ) {
@@ -32,7 +32,7 @@ class Menu extends \Magento\Framework\View\Element\Template
     }
     
     public function _construct() {
-        $this->setTemplate('WSite_Menu::menu.phtml');
+        $this->setTemplate('MagentoYo_Menu::menu.phtml');
         parent::_construct();
     }
     

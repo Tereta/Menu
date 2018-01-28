@@ -13,7 +13,7 @@
  * @license     http://opensource.org/licenses/osl-3.0.php Open Software License (OSL 3.0)
  */
 
-namespace WSite\Menu\Model\Config\Source\Menu;
+namespace MagentoYo\Menu\Model\Config\Source\Menu;
 
 class Options implements \Magento\Framework\Option\ArrayInterface
 {
@@ -33,7 +33,7 @@ class Options implements \Magento\Framework\Option\ArrayInterface
      * @param \Magento\Framework\Locale\ListsInterface $localeLists
      */
     public function __construct(
-        \WSite\Menu\Model\ResourceModel\Menu\CollectionFactory $menuCollectionFactory,
+        \MagentoYo\Menu\Model\ResourceModel\Menu\CollectionFactory $menuCollectionFactory,
         \Magento\Framework\Locale\ListsInterface $localeLists
     ) {
         $this->_menuCollectionFactory = $menuCollectionFactory;

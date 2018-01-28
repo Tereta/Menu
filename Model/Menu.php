@@ -13,23 +13,26 @@
  * @license     http://opensource.org/licenses/osl-3.0.php Open Software License (OSL 3.0)
  */
 
-namespace WSite\Menu\Model;
+namespace MagentoYo\Menu\Model;
 
-use \WSite\Articles\Helper\Data as HelperData;
+use \MagentoYo\Articles\Helper\Data as HelperData;
 
 class Menu extends \Magento\Framework\Model\AbstractModel
 {
     protected $_urlModel;
+    protected $_storeManager;
     
     public function __construct(
         \Magento\Framework\Model\Context $context,
         \Magento\Framework\Registry $registry,
         \Magento\Framework\UrlInterface $urlModel,
+        \Magento\Store\Model\StoreManagerInterface $storeManager,
         \Magento\Framework\Model\ResourceModel\AbstractResource $resource = null,
         \Magento\Framework\Data\Collection\AbstractDb $resourceCollection = null,
         array $data = array()
     ) {
         $this->_urlModel = $urlModel;
+        $this->_storeManager = $storeManager;
         
         parent::__construct(
             $context,
@@ -46,7 +49,7 @@ class Menu extends \Magento\Framework\Model\AbstractModel
     protected function _construct()
     {
         parent::_construct();
-        $this->_init('WSite\Menu\Model\ResourceModel\Menu');
+        $this->_init('MagentoYo\Menu\Model\ResourceModel\Menu');
     }
     
     public function getTree()
@@ -82,7 +85,7 @@ class Menu extends \Magento\Framework\Model\AbstractModel
         $matched = preg_match('/^([a-z]+):\/\/(.*)$/Usi', $link, $match);
         
         if (!$matched && strpos($link, '://') === false) {
-            return $this->_urlModel->getUrl($link);
+            return $this->_storeManager->getStore()->getBaseUrl() . $link;
         }
         
         if (!$matched) {

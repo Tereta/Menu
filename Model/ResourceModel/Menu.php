@@ -13,7 +13,7 @@
  * @license     http://opensource.org/licenses/osl-3.0.php Open Software License (OSL 3.0)
  */
 
-namespace WSite\Menu\Model\ResourceModel;
+namespace MagentoYo\Menu\Model\ResourceModel;
 
 class Menu extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb
 {
@@ -22,6 +22,6 @@ class Menu extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb
      */
     protected function _construct()
     {
-        $this->_init('wsite_menu', 'entity_id');
+        $this->_init('magentoyo_menu', 'entity_id');
     }
 }

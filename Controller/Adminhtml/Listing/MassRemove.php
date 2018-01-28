@@ -13,7 +13,7 @@
  * @license     http://opensource.org/licenses/osl-3.0.php Open Software License (OSL 3.0)
  */
 
-namespace WSite\Menu\Controller\Adminhtml\Listing;
+namespace MagentoYo\Menu\Controller\Adminhtml\Listing;
 
 class MassRemove extends \Magento\Backend\App\Action
 {
@@ -21,7 +21,7 @@ class MassRemove extends \Magento\Backend\App\Action
     
     public function __construct(
         \Magento\Backend\App\Action\Context $context,
-        \WSite\Menu\Model\MenuFactory $menuFactory
+        \MagentoYo\Menu\Model\MenuFactory $menuFactory
     ) {
         $this->_menuFactory = $menuFactory;
         
@@ -63,6 +63,6 @@ class MassRemove extends \Magento\Backend\App\Action
     
     protected function _isAllowed()
     {
-        return $this->_authorization->isAllowed('WSite_Menu::content_menu');
+        return $this->_authorization->isAllowed('MagentoYo_Menu::content_menu');
     }
 }

@@ -13,14 +13,14 @@
  * @license     http://opensource.org/licenses/osl-3.0.php Open Software License (OSL 3.0)
  */
 
-namespace WSite\Menu\Controller\Adminhtml\Listing;
+namespace MagentoYo\Menu\Controller\Adminhtml\Listing;
 
 class Save extends \Magento\Backend\App\Action
 {
     protected $_menuModel;
     
     public function __construct(
-        \WSite\Menu\Model\MenuFactory $menuModelFactory,
+        \MagentoYo\Menu\Model\MenuFactory $menuModelFactory,
         \Magento\Backend\App\Action\Context $context
     ) {
         $this->_menuModelFectory = $menuModelFactory;
@@ -83,6 +83,6 @@ class Save extends \Magento\Backend\App\Action
     
     protected function _isAllowed()
     {
-        return $this->_authorization->isAllowed('WSite_Menu::content_menu');
+        return $this->_authorization->isAllowed('MagentoYo_Menu::content_menu');
     }
 }

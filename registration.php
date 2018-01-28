@@ -15,6 +15,6 @@
 
 \Magento\Framework\Component\ComponentRegistrar::register(
     \Magento\Framework\Component\ComponentRegistrar::MODULE,
-    'WSite_Menu',
+    'MagentoYo_Menu',
     __DIR__
 );

@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
     <menu>
-        <add id="WSite_Menu::content_menu" title="Menu" translate="title" module="WSite_Menu" sortOrder="20" parent="Magento_Backend::content" resource="WSite_Menu::content_menu"/>
-        <add id="WSite_Menu::content_menu_listing" title="Menus" module="WSite_Menu" sortOrder="100" parent="WSite_Menu::content_menu" action="wsite_menu/listing" resource="WSite_Menu::content_menu_listing"/>
+        <add id="MagentoYo_Menu::content_menu" title="Menu" translate="title" module="MagentoYo_Menu" sortOrder="20" parent="Magento_Backend::content" resource="MagentoYo_Menu::content_menu"/>
+        <add id="MagentoYo_Menu::content_menu_listing" title="Menus" module="MagentoYo_Menu" sortOrder="100" parent="MagentoYo_Menu::content_menu" action="magentoyo_menu/listing" resource="MagentoYo_Menu::content_menu_listing"/>
     </menu>
 </config>

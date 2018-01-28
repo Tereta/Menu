@@ -13,7 +13,7 @@
  * @license     http://opensource.org/licenses/osl-3.0.php Open Software License (OSL 3.0)
  */
 
-namespace WSite\Menu\Controller\Adminhtml\Listing;
+namespace MagentoYo\Menu\Controller\Adminhtml\Listing;
 
 class Index extends \Magento\Backend\App\Action
 {
@@ -21,7 +21,7 @@ class Index extends \Magento\Backend\App\Action
     
     protected function _isAllowed()
     {
-        return $this->_authorization->isAllowed('WSite_Menu::content_menu');
+        return $this->_authorization->isAllowed('MagentoYo_Menu::content_menu');
     }
     
     public function __construct(
@@ -36,7 +36,7 @@ class Index extends \Magento\Backend\App\Action
     protected function _initAction()
     {
         $resultPage = $this->_resultPageFactory->create();
-        $resultPage->setActiveMenu('WSite_Menu::content_menu');
+        $resultPage->setActiveMenu('MagentoYo_Menu::content_menu');
         return $resultPage;
     }
     

@@ -13,10 +13,10 @@
  * @license     http://opensource.org/licenses/osl-3.0.php Open Software License (OSL 3.0)
  */
 
-namespace WSite\Menu\Model\ResourceModel\Menu\Grid;
+namespace MagentoYo\Menu\Model\ResourceModel\Menu\Grid;
 
 use Magento\Framework\Api\Search\SearchResultInterface;
-use WSite\Menu\Model\ResourceModel\Menu\Collection as CatalogCollection;
+use MagentoYo\Menu\Model\ResourceModel\Menu\Collection as CatalogCollection;
 
 class Collection extends CatalogCollection implements SearchResultInterface
 {
@@ -26,7 +26,7 @@ class Collection extends CatalogCollection implements SearchResultInterface
     {
         $this->_init(
             'Magento\Framework\View\Element\UiComponent\DataProvider\Document',
-            'WSite\Menu\Model\ResourceModel\Menu'
+            'MagentoYo\Menu\Model\ResourceModel\Menu'
         );
     }
     

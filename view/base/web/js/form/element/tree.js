@@ -13,7 +13,7 @@ define([
 
     return Abstract.extend({
         defaults: {
-            elementTmpl: 'WSite_Menu/form/element/tree',
+            elementTmpl: 'MagentoYo_Menu/form/element/tree',
         },
         
         // Data observables

@@ -13,7 +13,7 @@
  * @license     http://opensource.org/licenses/osl-3.0.php Open Software License (OSL 3.0)
  */
 
-namespace WSite\Menu\Plugin\Block;
+namespace MagentoYo\Menu\Plugin\Block;
 
 use Magento\Catalog\Model\Category;
 use Magento\Framework\Data\Collection;
@@ -39,19 +39,12 @@ class Topmenu extends \Magento\Catalog\Plugin\Block\Topmenu
 
     protected $_menuModelFactory;
     
-    /**
-     * @param \Magento\Catalog\Helper\Category $catalogCategory
-     * @param \Magento\Catalog\Model\ResourceModel\Category\CollectionFactory $categoryCollectionFactory
-     * @param \Magento\Store\Model\StoreManagerInterface $storeManager
-     * @param \Magento\Catalog\Model\Layer\Resolver $layerResolver
-     * @param \WSite\Menu\Model\MenuFactory $menuModelFactory
-     */
     public function __construct(
         \Magento\Catalog\Helper\Category $catalogCategory,
         \Magento\Catalog\Model\ResourceModel\Category\CollectionFactory $categoryCollectionFactory,
         \Magento\Store\Model\StoreManagerInterface $storeManager,
         \Magento\Catalog\Model\Layer\Resolver $layerResolver,
-        \WSite\Menu\Model\MenuFactory $menuModelFactory,
+        \MagentoYo\Menu\Model\MenuFactory $menuModelFactory,
         \Magento\Framework\App\Config\ScopeConfigInterface $scopeConfig
     ) {
         $this->_menuModelFactory = $menuModelFactory;
@@ -83,7 +76,7 @@ class Topmenu extends \Magento\Catalog\Plugin\Block\Topmenu
         $limit = 0
     ) {
         $menuId = $this->_scopeConfig->getValue(
-            'wsite_menu/general/main_menu',
+            'magentoyo_menu/general/main_menu',
             \Magento\Store\Model\ScopeInterface::SCOPE_STORE
         );
         
@@ -131,7 +124,6 @@ class Topmenu extends \Magento\Catalog\Plugin\Block\Topmenu
      */
     private function getMenuItemAsArray($menuItem)
     {
-        $e=0;
         return [
             'name' => $menuItem->dataItem->title,
             'id' => 'category-node-' . uniqId(),
