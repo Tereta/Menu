@@ -15,14 +15,11 @@
 -->
 <div class="admin__action-w3site-tree">
     <!-- ko if: dataTree().length -->
-        <ul class="data-tree" data-bind="template: {name: 'dataTreeTemplate', foreach: dataTree, as: 'dataTreeItem'}"></ul>
+        <ul class="data-tree sortable-tree" afterRender="initSortableTree" data-bind="template: {name: 'dataTreeTemplate', foreach: dataTree, as: 'dataTreeItem'}"></ul>
     <!-- /ko -->
     <div class="buttonsScope">
         <span 
-            data-bind="
-                click: element.addSubElement
-
-            " href="#" class="addButton"></span>
+            data-bind="click: element.addSubElement" href="#" class="addButton"></span>
     </div>
 
     <!-- ko if: dataForm().shown -->
@@ -56,7 +53,7 @@
     " />
 </div>
 <script type="text/html" id="dataTreeTemplate">
-    <li>
+    <li data-bind="attr: {identifier: dataTreeItem.dataItem().identifier}">
         <div class="listItemWrapper">
             <span data-bind="click: function(){ 
                         element.editElement($data, $parent)
@@ -65,6 +62,7 @@
                 <i>(<span data-bind="text: dataTreeItem.dataItem().link"></span>)</i>
             </span>
             <div class="buttonsScope">
+                <span href="#" class="moveButton">(Move)</span>
                 <span 
                     data-bind="
                         click: function(){ 
@@ -86,7 +84,7 @@
             </div>
         </div>
         <!-- ko if: dataTreeItem.dataTree().length -->
-            <ul data-bind="template: { name: 'dataTreeTemplate', foreach: dataTreeItem.dataTree, as: 'dataTreeItem' }"></ul>
+            <ul class="sortable-tree" data-bind="template: { name: 'dataTreeTemplate', foreach: dataTreeItem.dataTree, as: 'dataTreeItem' }"></ul>
         <!-- /ko -->
     </li>
 </script>

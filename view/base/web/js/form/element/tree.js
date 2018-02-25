@@ -7,8 +7,9 @@ define([
     'Magento_Ui/js/form/element/abstract',
     'mage/translate',
     'ko',
-    'jquery'
-], function (Abstract, translate, ko, jQuery) {
+    'jquery',
+    'jquery/ui'
+], function (Abstract, translate, ko, jQuery, jQueryUi) {
     'use strict';
 
     return Abstract.extend({
@@ -22,11 +23,13 @@ define([
         
         // Tree
         addSubElement: function($data, $element) {
+            var _self = this;
             var updatedData = $data.dataTree();
             updatedData.push({
                 'dataItem' : ko.observable({
                    'title' : '...',
-                   'link'  : '#'
+                   'link'  : '#',
+                   'identifier' : _self.indentifierCounter++,
                 }),
                 'dataTree'  : ko.observable([])
             });
@@ -111,9 +114,12 @@ define([
             return koValue;
         },
         
+        indentifierCounter: 0,
+        
         _fromValueConvert: function(dataObservableArray) {
             var _self = this;
             jQuery(dataObservableArray()).each(function(key, value){
+                value.dataItem.identifier = _self.indentifierCounter++;
                 value.dataItem = ko.observable(value.dataItem);
                 value.dataTree = ko.observable(value.dataTree);
                 
@@ -133,6 +139,27 @@ define([
             this.dataTree = this.fromValue();
             
             return this;
+        },
+        
+        initSortableTree: function() {
+            var self = this;
+            jQuery('.admin__action-w3site-tree .sortable-tree').sortable({
+                connectWith: ".admin__action-w3site-tree .sortable-tree",
+                handle: ".moveButton",
+                update: function( event, ui ) {
+                    debugger;
+                    var currentElement = jQuery(ui.item);
+                    var prevElement = jQuery(ui.item).prev();
+                    
+                    var currentId = currentElement.attr('data-identifier');
+                    var movedAfterId = null;
+                    if (prevElement.length > 0) {
+                        movedAfterId = prevElement.attr('data-identifier');
+                    }
+                    
+                    self.toValue();
+                }
+            }).disableSelection();
         }
     });
 });

@@ -18,8 +18,6 @@
     <?php foreach($block->getItems() as $item) : ?>
         <li>
             <a href="<?php echo $item->dataItem->link ?>"><?php echo $item->dataItem->title ?></a>
-            
-            <?php $e= $this->getSubItems($item->dataTree) ?>
             <?php echo $this->getSubItems($item->dataTree)->toHtml() ?>
         </li>
     <?php endforeach ?>
