@@ -147,19 +147,112 @@ define([
                 connectWith: ".admin__action-w3site-tree .sortable-tree",
                 handle: ".moveButton",
                 update: function( event, ui ) {
-                    debugger;
+                    if (!ui.item.is(':visible')) {
+                        return;
+                    }
+                    
                     var currentElement = jQuery(ui.item);
                     var prevElement = jQuery(ui.item).prev();
-                    
+                    var parentElement = jQuery(ui.item).parent().parent();
+
                     var currentId = currentElement.attr('data-identifier');
+                    
                     var movedAfterId = null;
                     if (prevElement.length > 0) {
                         movedAfterId = prevElement.attr('data-identifier');
                     }
                     
-                    self.toValue();
+                    var parentId = null;
+                    if (parentElement.length > 0) {
+                        parentId = parentElement.attr('data-identifier');
+                    }
+                    
+                    self.moveElement.call(self, currentId, parentId, movedAfterId);
+                    ui.item.remove();
                 }
             }).disableSelection();
+        },
+        
+        moveElementGrepRemove: function(dataTree, currentId) {
+            var moveElement;
+            var self = this;
+            
+            var parentDataTree = jQuery.grep(dataTree(), function(value) {
+                if (value.dataItem().identifier == currentId) {
+                    moveElement = value;
+                    return false;
+                }
+                
+                if (value.dataTree().length > 0 && !moveElement) {
+                    moveElement = self.moveElementGrepRemove(value.dataTree, currentId);
+                }
+                
+                return true;
+            });
+            dataTree(parentDataTree)
+            
+            return moveElement;
+        },
+        
+        moveElementGrepInsert: function(dataTree, movedParent) {
+            var moveToStatement;
+            var self = this;
+            
+            jQuery.grep(dataTree(), function(value) {
+                if (value.dataItem().identifier == movedParent) {
+                    moveToStatement = value.dataTree;
+                }
+                
+                if (!moveToStatement) {
+                    moveToStatement = self.moveElementGrepInsert(value.dataTree, movedParent);
+                }
+            })
+            
+            return moveToStatement;
+        },
+        
+        moveElement: function(currentId, movedParent, movedAfterId) {
+            var moveElement = this.moveElementGrepRemove(this.dataTree, currentId);
+debugger;
+            var moveTo = this.dataTree();
+            var moveToStatement = this.dataTree;
+            
+            if (movedParent) {
+                moveToStatement = this.moveElementGrepInsert(this.dataTree, movedParent);
+                moveTo = moveToStatement();
+                
+                debugger;
+                //!!!
+                /*
+                jQuery.grep(this.dataTree(), function(value) {
+                    if (value.dataItem().identifier == movedParent) {
+                        moveTo = value.dataTree();
+                        moveToStatement = value.dataTree;
+                    }
+                })
+                */
+            }
+            
+            if (movedAfterId) {
+                var newArray = [];
+                for (var key in moveTo) {
+                    newArray.push(moveTo[key]);
+                    if (moveTo[key].dataItem().identifier == movedAfterId) {
+                        newArray.push(moveElement);
+                    }
+                }
+                
+                moveTo = newArray;
+            }
+            else {
+                moveTo.unshift(moveElement);
+            }
+            
+            moveToStatement(moveTo);
+            debugger;
+            
+            this.hideForm();
+            this.toValue();
         }
     });
 });

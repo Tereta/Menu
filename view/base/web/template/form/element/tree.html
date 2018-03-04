@@ -53,7 +53,7 @@
     " />
 </div>
 <script type="text/html" id="dataTreeTemplate">
-    <li data-bind="attr: {identifier: dataTreeItem.dataItem().identifier}">
+    <li data-bind="attr: {'data-identifier': dataTreeItem.dataItem().identifier}">
         <div class="listItemWrapper">
             <span data-bind="click: function(){ 
                         element.editElement($data, $parent)
